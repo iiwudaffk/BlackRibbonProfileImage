@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
     <link rel="stylesheet" href="styles.css">
-    <!--    <script>
+        <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
@@ -34,7 +34,7 @@
         });
         ga('send', 'pageview');
         ga('Main.send', 'event', 'สร้างรูปเรารักในหลวง', 'view', '');
-    </script>-->
+    </script>
 </head>
 
 <body>
@@ -60,13 +60,11 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col" >
-                        <canvas id="imageCanvas" width=600 height=600 ></canvas>
-                    </div>
+                    
                     <div class="mdl-cell mdl-cell--6-col">
                         <!--<h1 class="font-title">เลือกรูป ribbin</h1>-->
 						<div class="mdl-textfield mdl-js-textfield" style="width:300px;">
-                            <span>1. เลือกรูป ribbin</span><br>
+                            <span>1. เลือกแบบ ribbon</span><br>
 						    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
 							     <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" onclick="handleClick(this);" checked>
 							     <span class="mdl-radio__label">แบบที่1</span>
@@ -78,22 +76,28 @@
 						</div>
                         <br>
                         <div class="mdl-textfield mdl-js-textfield" style="width:300px;">
-                            <span>2. เลือกรูป Profile จากเครื่องของคุณ</span>
+                            <span>2. เลือกรูป Profile จากเครื่องของคุณ (แนะนำเป็น 4 เหลี่ยมจตุรัส)</span>
                             <input class="mdl-textfield__input" type="file" id="imageLoader" name="imageLoader" value="เลือกรูปจากเครื่องคอมพิวเตอร์">
                         </div>                        
                         <br>
-                        <!--<div class="text-right" style="width:300px;">
+                        <div class="text-right" style="width:300px;">
                             <a href="#" id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="material-icons" style="top:0">file_download</i> ดาวน์โหลด</a> 
-                        </div>-->
+                        </div>
                         <div class="mdl-textfield mdl-js-textfield" style="width:300px;">
                             <span>3. คลิกขวาที่รูป แล้วกด save as ได้ทันที</span>
                             <br>
                         </div>
-                        <hr style="width:300px;">
                          </div>
-                    
+                    <div class="mdl-cell mdl-cell--6-col text-left" >
+                        <canvas id="imageCanvas" width=600 height=600 ></canvas>
+                    </div>
                 </div>
                 <div class="container">
+                    <small>
+                        - รูปภาพ by <a href="https://www.facebook.com/jibbazee/posts/10153967020642895" target="_blank">Jibbazee</a>
+                        - ขอบคุณแนวคิดจาก <a href="https://earthchie.com/loveking" target="_blank">https://earthchie.com/loveking</a>
+                        - source code on <a href="https://github.com/iiwudaffk/BlackRibbonProfileImage" target="_blank">GitHub</a> by <a href="https://www.facebook.com/iiwudaffk" target="_blank">IIwuDaFFK</a> naja
+                    </small>
                 </div>
             </div>
         </main>
@@ -147,12 +151,13 @@
         };
         render();
 
-        //download.onclick = function (e) {
-        //    ga('Main.send', 'event', 'สร้างรูปเรารักในหลวง - Download', 'view', username.value);
-        //    alert('gg'); canvas.setAttribute('crossOrigin', 'anonymous');
-        //    this.href = canvas.toDataURL("image/png");
-        //    this.download = 'We_Love_the_King.png';
-        //};
+        download.onclick = function (e) {
+            ga('Main.send', 'event', 'สร้างรูปเรารักในหลวง - Download', 'view', "blackribbon");
+            alert('gg');
+            canvas.setAttribute('crossOrigin', 'anonymous');
+            this.href = canvas.toDataURL();
+            this.download = 'We_Love_the_King.png';
+        };
     </script>
 </body>
 
