@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="">
+    <title>Black Ribbin : สร้างรูปโปรไฟล์</title>
+    <meta property="og:site_name" content="สร้างรูปเรารักในหลวง" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="เครื่องมือสร้างรูปโปรไฟล์" />
+    <meta property="og:image" content="og.jpg" />
+    <meta property="og:description" content="คุณสามารถสร้างรูปโปรไฟล์เรารักในหลวงได้ง่ายๆ เพียงกรอกชื่อแล้วกดดาวน์โหลดได้ทันที" />
+    <meta property="og:locale" content="th_TH" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!--    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-33058582-1', 'auto', {
+            'name': 'Main'
+        });
+        ga('send', 'pageview');
+        ga('Main.send', 'event', 'สร้างรูปเรารักในหลวง', 'view', '');
+    </script>-->
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <!--    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=113581508678006";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>-->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <!--<header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title font-title" style="font-size: 2.2em">
+                    <i class="material-icons">favorite</i> สร้างรูปเรารักในหลวง
+                </span>
+            </div>
+        </header>-->
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col" >
+                        <canvas id="imageCanvas" width=600 height=600 ></canvas>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <!--<h1 class="font-title">เลือกรูป ribbin</h1>-->
+						<div class="mdl-textfield mdl-js-textfield" style="width:300px;">
+                            <span>เลือกรูป ribbin</span><br>
+						    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+							     <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" onclick="handleClick(this);" checked>
+							     <span class="mdl-radio__label">แบบที่1</span>
+							</label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+							     <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2" onclick="handleClick(this);">
+							     <span class="mdl-radio__label">แบบที่2</span>
+							</label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+							     <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3" onclick="handleClick(this);">
+							     <span class="mdl-radio__label">แบบที่3</span>
+							</label>
+						</div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield" style="width:300px;">
+                            <span>เลือกรูป Profile</span>
+                            <input class="mdl-textfield__input" type="file" id="imageLoader" name="imageLoader" value="เลือกรูปจากเครื่องคอมพิวเตอร์">
+                        </div>                        
+                        <br>
+                        <!--<div class="text-right" style="width:300px;">
+                            <a href="#" id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="material-icons" style="top:0">file_download</i> ดาวน์โหลด</a> 
+                        </div>-->
+                        <div style="width:300px;">
+                            <br>
+                        </div>
+                        <hr style="width:300px;">
+                         </div>
+                    
+                </div>
+                <div class="container">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script>
+        var imgbg = new Image();
+        imgbg.crossorigin = "anonymous"
+        imgbg.src = '01.png';
+        function handleClick(cb) {
+            if (cb.value == "1") {
+                imgbg.src = '01.png';
+                render();
+            } else if (cb.value == "2") {
+                imgbg.src = '02.png';
+                render();
+            } else {
+                imgbg.src = '03.png';
+                render();
+            }
+        }
+
+        var imgProfile = new Image();
+        imgProfile.crossorigin = "anonymous"
+        var imageLoader = document.getElementById('imageLoader');
+        imageLoader.addEventListener('change', handleImage, false);
+        var canvas = document.getElementById('imageCanvas');
+        var ctx = canvas.getContext('2d');
+
+        function handleImage(e) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                imgProfile.src = event.target.result;
+                render();
+            }
+            reader.readAsDataURL(e.target.files[0]);
+
+        }
+
+        var render = function () {
+            var img = new Image();
+            img.onload = function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (imgProfile.src != "" && imgProfile.src != null) {
+                    ctx.drawImage(imgProfile, 0, 0, imgProfile.width, imgProfile.height, 0, 0, canvas.width, canvas.height);
+                }
+                ctx.drawImage(imgbg, 0, 0, imgbg.width, imgbg.height, 0, 0, canvas.width, canvas.height);
+            }
+            img.src = imgbg.src;
+        };
+        render();
+
+        //download.onclick = function (e) {
+        //    ga('Main.send', 'event', 'สร้างรูปเรารักในหลวง - Download', 'view', username.value);
+        //    alert('gg'); canvas.setAttribute('crossOrigin', 'anonymous');
+        //    this.href = canvas.toDataURL("image/png");
+        //    this.download = 'We_Love_the_King.png';
+        //};
+    </script>
+</body>
+
+</html>
