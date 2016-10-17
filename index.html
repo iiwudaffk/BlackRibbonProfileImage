@@ -47,7 +47,9 @@
                 <h1 class="font-title">สร้างรูปโปรไฟล์ติดแถบ Ribbon สีดำ</h1>
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--12-col-phone text-right" >
+                        <canvas id="myCanvas" width="600" height="600" style="float:right;border:1px solid red;display:none"></canvas>
                         <canvas id="imageCanvas" width="600" height="600" style="float:right"></canvas>
+                        <canvas id="imageCanvasDownload" width="600" height="600" style="float:right;display:none"></canvas>
                         <br style="clear:both">
                     </div>
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--12-col-phone">                        
@@ -72,17 +74,17 @@
                             <span>3. คลิกขวาที่รูป แล้วกด save as หรือปุ่ม Download ได้ทันที</span>
                             <br>
                         </div>
-                            <div class="text-left">
-                                <a href="#" id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="material-icons" style="top:0">file_download</i> ดาวน์โหลด</a> 
-                            </div>
-                        <div  class="mdl-textfield mdl-js-textfield">
+                        <div class="text-left">
+                            <a href="#" id="download" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="material-icons" style="top:0">file_download</i> ดาวน์โหลด</a> 
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
                             <small>
-                        - รูปภาพ by <a href="https://www.facebook.com/jibbazee/posts/10153967020642895" target="_blank">Jibbazee</a><br>
-                        - ขอบคุณแนวคิดจาก <a href="https://earthchie.com/loveking" target="_blank">https://earthchie.com/loveking</a><br>
-                        - source code on <a href="https://github.com/iiwudaffk/BlackRibbonProfileImage" target="_blank">GitHub</a> by <a href="https://www.facebook.com/iiwudaffk" target="_blank">IIwuDaFFK</a> naja<br>
-                        </small>
-                            </div>
-                         </div>
+                                - รูปภาพ by <a href="https://www.facebook.com/jibbazee/posts/10153967020642895" target="_blank">Jibbazee</a><br>
+                                - ขอบคุณแนวคิดจาก <a href="https://earthchie.com/loveking" target="_blank">https://earthchie.com/loveking</a><br>
+                                - source code on <a href="https://github.com/iiwudaffk/BlackRibbonProfileImage" target="_blank">GitHub</a> by <a href="https://www.facebook.com/iiwudaffk" target="_blank">IIwuDaFFK</a> naja<br>
+                            </small>
+                        </div>
+                    </div>
                     
                 </div>
                 <div class="container">
@@ -92,10 +94,29 @@
         </main>
     </div>
 
-    <script defer src="/js/jquery-3.1.1.min.js"></script>
-    <script defer src="/js/jcanvas.min.js"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/jcanvas.min.js"></script>
     <script defer src="/js/material.min.js"></script>
     <script>
+        // Store the canvas object into a variable
+        var $myCanvas = $('#myCanvas');
+        var a = $myCanvas.attr('width');
+        var b = $myCanvas.attr('height');
+
+        // rectangle shape 
+        $myCanvas.drawImage({
+            source: '02.png',
+            x: 0, y: 0,
+            width: a, height: b,
+            fromCenter: false,
+            shadowColor: '#222',
+            shadowBlur: 3,
+            layer: true,
+            draggable: true,
+            bringToFront: true,
+        });
+
+
         var imgbg = new Image();
         imgbg.crossorigin = "anonymous"
         imgbg.src = '01.png';
